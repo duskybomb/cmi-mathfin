@@ -1,0 +1,14 @@
+I started by finding arbitrage between future stock prices and spot stock prices (intraday):
+    Simply plotted all the future vs spot prices for all the stocks available
+    Read a few research papers on arbitrage, tried to follow IIM Calcutta paper, but then realised we need future stock prices of 11 days prior to intraday data
+Tried forecasting the stock prices (intraday):
+    Started with changing the scale from time to volume of stocks traded. Plotted volume-series graph for it
+    Using the default Random forest on stock prices v volume of stocks traded, we got a really good result. A correlation of ~0.94.
+    Tried it against time, got a correlation of ~0.97
+    Tried it for daily returns are got ~0.40
+Went on to check how does CAPM perform on intra-day data:
+    Had to do a lot of data cleaning, the data had missing values and values were oddly distributed against time
+    Made 1min, 2min, 3min, 5min, 6min and 10 min intervals for the data and tried finding CAPM.
+    Adjusted R-squared was ~0 for 1 min and 2 min but generally increased with increasing interval size
+    Got adj R-squared of between 0.20 - 0.60 for 5min, 6min and 10min interval
+    Tried a strategy based on a 5min interval, results were promising
